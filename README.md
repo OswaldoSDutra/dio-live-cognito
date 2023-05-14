@@ -12,19 +12,19 @@
 ### Criando uma API REST no Amazon API Gateway
 
 - API Gateway Dashboard -> Create API -> REST API -> Build
-- Protocol - REST -> Create new API -> API name [dio_live_api] -> Endpoint Type - Regional -> Create API
-- Resources -> Actions -> Create Resource -> Resource Name [Items] -> Create Resource
+- Protocol - REST -> Create new API -> API name [products] -> Endpoint Type - Regional -> Create API
+- Resources -> Actions -> Create Resource -> Resource Name [products] -> Create Resource
 
 ### No Amazon DynamoDB
 
-- DynamoDB Dashboard -> Tables -> Create table -> Table name [Items] -> Partition key [id] -> Create table
+- DynamoDB Dashboard -> Tables -> Create table -> Table name [products] -> Partition key [id] -> Create table
 
 ### No AWS Lambda
 
 #### Função para inserir item
 
-- Lambda Dashboard -> Create function -> Name [put_item_function] -> Create function
-- Inserir código da função ```put_item_function.js``` disponível na pasta ```/src``` -> Deploy
+- Lambda Dashboard -> Create function -> Name [put_products] -> Create function
+- Inserir código da função via upload, após gerar um uber.jar da solução
 - Configuration -> Execution role -> Abrir a Role no console do IAM
 - IAM -> Roles -> Role criada no passo anterior -> Permissions -> Add inline policy
 - Service - DynamoDB -> Manual actions -> add actions -> putItem
@@ -43,8 +43,8 @@
 - Body -> Raw -> JSON -> Adicionar o seguinte body
 ```
 {
-  "id": "003",
-  "price": 600
+  "name": "product a",
+  "price": "R$600"
 }
 ```
 - Send
